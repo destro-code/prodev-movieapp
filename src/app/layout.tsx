@@ -1,6 +1,7 @@
 // src/app/layout.tsx
-import "./globals.css";
+import "@/app/globals.css";
 import { FavoriteProvider } from "@/context/FavoriteContext";
+import Navbar from "@/components/Navbar";
 
 export default function RootLayout({
   children,
@@ -10,6 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Navbar />
         <FavoriteProvider>{children}</FavoriteProvider>
       </body>
     </html>

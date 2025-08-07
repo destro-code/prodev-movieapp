@@ -1,43 +1,46 @@
+// src/context/FavoriteContext.tsx
 "use client";
-
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, ReactNode, useState } from "react";
 import { Movie } from "@/types";
 
-type FavoriteContextType = {
+interface FavoritesContextValue {
   favorites: Movie[];
   addFavorite: (movie: Movie) => void;
   removeFavorite: (id: number) => void;
-};
+  isFavorite: (id: number) => boolean;
+}
 
-const FavoriteContext = createContext<FavoriteContextType | undefined>(
+const FavoritesContext = createContext<FavoritesContextValue | undefined>(
   undefined
 );
 
-export const FavoriteProvider = ({ children }: { children: ReactNode }) => {
+export function FavoriteProvider({ children }: { children: ReactNode }) {
   const [favorites, setFavorites] = useState<Movie[]>([]);
 
   const addFavorite = (movie: Movie) => {
-    if (!favorites.find((fav) => fav.id === movie.id)) {
-      setFavorites([...favorites, movie]);
-    }
+    setFavorites((curr) =>
+      curr.some((m) => m.id === movie.id) ? curr : [...curr, movie]
+    );
   };
 
   const removeFavorite = (id: number) => {
-    setFavorites(favorites.filter((fav) => fav.id !== id));
+    setFavorites((curr) => curr.filter((m) => m.id !== id));
   };
 
+  const isFavorite = (id: number) => favorites.some((m) => m.id === id);
+
   return (
-    <FavoriteContext.Provider
-      value={{ favorites, addFavorite, removeFavorite }}
+    <FavoritesContext.Provider
+      value={{ favorites, addFavorite, removeFavorite, isFavorite }}
     >
       {children}
-    </FavoriteContext.Provider>
+    </FavoritesContext.Provider>
   );
-};
+}
 
-export const useFavorites = () => {
-  const context = useContext(FavoriteContext);
-  if (!context)
+export function useFavorites() {
+  const ctx = useContext(FavoritesContext);
+  if (!ctx)
     throw new Error("useFavorites must be used within FavoriteProvider");
-  return context;
-};
+  return ctx;
+}

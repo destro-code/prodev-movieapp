@@ -1,27 +1,32 @@
 "use client";
 import { useState } from "react";
 
+type SearchBarProps = {
+  onSearch: (query: string) => void | Promise<void>;
+  className?: string;
+};
+
 export default function SearchBar({
   onSearch,
-}: {
-  onSearch: (query: string) => void;
-}) {
+  className = "",
+}: SearchBarProps) {
   const [query, setQuery] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSearch(query);
+    // allow async or sync handlers
+    void onSearch(query);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6 w-full">
+    <form onSubmit={handleSubmit} className={`mb-6 w-full ${className}`}>
       <div className="flex flex-col sm:flex-row gap-2 sm:items-center w-full">
         <input
           type="text"
           placeholder="Search movies..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full sm:flex-1 p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          className="w-full sm:flex-1 p-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
         />
         <button
           type="submit"

@@ -5,7 +5,6 @@ import { fetchMovies, fetchMoviesByGenre } from "@/lib/tmdb";
 import { Movie } from "@/types";
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
-import GenreFilter from "@/components/GenreFilter";
 
 export default function HomePage() {
   const [movies, setMovies] = useState<Movie[]>([]);

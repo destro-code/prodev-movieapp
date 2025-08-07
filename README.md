@@ -33,7 +33,7 @@ MovieFlix is a modern movie recommendation application that allows users to brow
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/yourusername/movieflix.git
+   git clone https://github.com/destro-code/prodev-movieapp.git
    cd movieflix
    ```
 

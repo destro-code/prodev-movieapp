@@ -40,11 +40,11 @@ export default function HomePage() {
       </section>
 
       {/* Genre Filter */}
-      <section className="px-4 py-4 bg-red-800">
+      {/* <section className="px-4 py-4 bg-gray-700">
         <div className="max-w-6xl mx-auto">
           <GenreFilter onSelect={loadGenre} />
         </div>
-      </section>
+      </section> */}
 
       {/* Movie Grid */}
       <section className="flex-1 px-4 py-6">

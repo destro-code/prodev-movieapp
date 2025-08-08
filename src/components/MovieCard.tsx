@@ -7,6 +7,15 @@ export default function MovieCard({ movie }: { movie: Movie }) {
   const { favorites, addFavorite, removeFavorite } = useFavorites();
   const isFavorite = favorites.some((fav) => fav.id === movie.id);
 
+  const releaseYear = movie.release_date
+    ? new Date(movie.release_date).getFullYear()
+    : "N/A";
+
+  const rating =
+    movie.vote_average !== undefined && movie.vote_average !== null
+      ? movie.vote_average.toFixed(1)
+      : "N/A";
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -21,9 +30,15 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         className="w-full h-auto rounded mb-4 object-cover hover:opacity-90 transition-opacity duration-300"
       />
 
-      <h2 className="text-lg font-semibold mb-2 line-clamp-1">{movie.title}</h2>
+      <h2 className="text-lg font-semibold mb-1 line-clamp-1">{movie.title}</h2>
+
+      <div className="flex items-center text-sm text-gray-400 mb-2">
+        <span className="mr-3">⭐ {rating}</span>
+        <span>📅 {releaseYear}</span>
+      </div>
+
       <p className="text-sm text-gray-300 mb-4 line-clamp-3">
-        {movie.overview}
+        {movie.overview || "No description available."}
       </p>
 
       <button

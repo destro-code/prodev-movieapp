@@ -10,6 +10,9 @@ export default function MovieCard({ movie }: { movie: Movie }) {
   const isFavorite = favorites.some((fav) => fav.id === movie.id);
   const [open, setOpen] = useState(false);
 
+  // Track if image failed to load
+  const [imgError, setImgError] = useState(false);
+
   const releaseYear = movie.release_date
     ? new Date(movie.release_date).getFullYear()
     : "N/A";
@@ -18,6 +21,27 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     movie.vote_average !== undefined && movie.vote_average !== null
       ? movie.vote_average.toFixed(1)
       : "N/A";
+
+  const posterUrl = movie.poster_path
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : "";
+
+  const placeholderSvg = `<svg xmlns='http://www.w3.org/2000/svg' width='500' height='750' viewBox='0 0 500 750' preserveAspectRatio='xMidYMid slice'>
+    <rect width='100%' height='100%' fill='#0b0f13' />
+    <g fill='#ef4444' opacity='0.06'>
+      <rect x='40' y='40' width='120' height='18' rx='6'/>
+      <rect x='40' y='68' width='80' height='10' rx='5'/>
+    </g>
+    <text x='50%' y='50%' fill='#94a3b8' font-family='Inter, Arial, sans-serif' font-size='20' text-anchor='middle' dominant-baseline='middle'>
+      No Image
+    </text>
+  </svg>`;
+
+  const placeholder = `data:image/svg+xml;utf8,${encodeURIComponent(
+    placeholderSvg
+  )}`;
+
+  const imgSrc = posterUrl && !imgError ? posterUrl : placeholder;
 
   return (
     <>
@@ -30,8 +54,10 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         className="bg-black rounded-lg shadow-lg p-4 flex flex-col text-white border border-red-700 hover:shadow-red-400 transition-shadow"
       >
         <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={imgSrc}
+          onError={() => setImgError(true)}
           alt={movie.title}
+          loading="lazy"
           className="w-full h-auto rounded mb-4 object-cover hover:opacity-90 transition-opacity duration-300"
         />
 
@@ -50,7 +76,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
 
         <button
           onClick={(e) => {
-            e.stopPropagation(); // prevent opening the modal when clicking favorite
+            e.stopPropagation();
             isFavorite ? removeFavorite(movie.id) : addFavorite(movie);
           }}
           className={`mt-auto py-2 px-4 rounded transition-all duration-300 text-sm font-medium ${

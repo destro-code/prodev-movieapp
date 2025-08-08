@@ -91,11 +91,7 @@ Deploy easily on [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.
 
 Contributions are welcome! Please open an issue or submit a pull request for improvements or new features.
 
----
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 

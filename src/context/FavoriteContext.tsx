@@ -1,26 +1,53 @@
 // src/context/FavoriteContext.tsx
 "use client";
-import { createContext, useContext, ReactNode, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 import { Movie } from "@/types";
 
-interface FavoritesContextValue {
+type FavoritesContextType = {
   favorites: Movie[];
   addFavorite: (movie: Movie) => void;
   removeFavorite: (id: number) => void;
   isFavorite: (id: number) => boolean;
-}
+};
 
-const FavoritesContext = createContext<FavoritesContextValue | undefined>(
+const FavoritesContext = createContext<FavoritesContextType | undefined>(
   undefined
 );
+const STORAGE_KEY = "movieflix-favorites";
 
 export function FavoriteProvider({ children }: { children: ReactNode }) {
   const [favorites, setFavorites] = useState<Movie[]>([]);
 
+  // load from localStorage once
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) setFavorites(JSON.parse(raw));
+    } catch (err) {
+      console.error("Failed to load favorites", err);
+    }
+  }, []);
+
+  // persist on change
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+    } catch (err) {
+      console.error("Failed to persist favorites", err);
+    }
+  }, [favorites]);
+
   const addFavorite = (movie: Movie) => {
-    setFavorites((curr) =>
-      curr.some((m) => m.id === movie.id) ? curr : [...curr, movie]
-    );
+    setFavorites((curr) => {
+      if (curr.some((m) => m.id === movie.id)) return curr;
+      return [...curr, movie];
+    });
   };
 
   const removeFavorite = (id: number) => {

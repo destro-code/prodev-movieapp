@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import "@/app/globals.css";
 import { FavoriteProvider } from "@/context/FavoriteContext";
 import Navbar from "@/components/Navbar";

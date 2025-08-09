@@ -48,9 +48,9 @@ MovieFlix is a modern movie recommendation application that allows users to brow
 3. **Configure environment variables:**
 
    - Create a `.env.local` file in the root directory.
-   - Add your movie API key:
+   - Add your TMDB API key:
      ```
-     NEXT_PUBLIC_MOVIE_API_KEY=your_api_key_here
+     NEXT_PUBLIC_TMDB_API_KEY
      ```
 
 4. **Run the development server:**
@@ -91,11 +91,7 @@ Deploy easily on [Vercel](https://vercel.com/) or [Netlify](https://www.netlify.
 
 Contributions are welcome! Please open an issue or submit a pull request for improvements or new features.
 
----
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 

@@ -14,6 +14,19 @@ export default function HomePage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
+  // merge existing + incoming while deduping by `id`
+  function mergeDedupeById<T extends { id: number }>(
+    existing: T[],
+    incoming: T[]
+  ) {
+    const map = new Map<number, T>();
+    // keep existing order
+    for (const it of existing) map.set(it.id, it);
+    // add/overwrite with incoming (won't change insertion order for duplicates)
+    for (const it of incoming) map.set(it.id, it);
+    return Array.from(map.values());
+  }
+
   const loadMovies = async (q = "", p = 1, append = false) => {
     try {
       setLoading(true);
@@ -25,7 +38,7 @@ export default function HomePage() {
       setPage(data.page || p);
 
       if (append) {
-        setMovies((prev) => [...prev, ...(data.results as Movie[])]);
+        setMovies((prev) => mergeDedupeById(prev, data.results as Movie[]));
       } else {
         setMovies(data.results as Movie[]);
       }

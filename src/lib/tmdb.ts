@@ -37,3 +37,4 @@ export async function fetchMoviesByGenre(genreId: number, page = 1): Promise<Mov
     total_results: data.total_results || 0,
   };
 }
+export type { MoviesResponse };

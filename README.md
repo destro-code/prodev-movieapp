@@ -24,7 +24,7 @@ MovieFlix is a modern movie recommendation application that allows users to brow
 - **Next.js** – Server-side rendering and dynamic routing
 - **TypeScript** – Type safety and scalable development
 - **Styled Components** – Modular and maintainable UI styling
-- **(Optional) React Native** – For mobile support
+
 
 ---
 
@@ -62,22 +62,6 @@ MovieFlix is a modern movie recommendation application that allows users to brow
    ```
 
 5. **Open [http://localhost:3000](http://localhost:3000) to view the app.**
-
----
-
-## Project Structure
-
-```
-movieflix/
-  ├── src/
-  │   ├── components/      # Reusable UI components
-  │   ├── pages/           # Next.js pages and dynamic routes
-  │   ├── lib/             # API utilities and helpers
-  │   ├── context/         # State management (favorites, etc.)
-  │   └── styles/          # Styled Components and global styles
-  ├── public/              # Static assets
-  └── README.md
-```
 
 ---
 

@@ -2,7 +2,7 @@
 
 MovieFlix is a modern movie recommendation application that allows users to browse trending movies, receive personalized recommendations, and manage their favorite selections. Built with Next.js and TypeScript, MovieFlix demonstrates scalable architecture, dynamic routing, API integration, and a responsive, interactive user interface.
 
-![Build Status](https://github.com/destro-code/prodev-movieapp/actions/workflows/ci.yml/badge.svg) ![License](https://img.shields.io/badge/License-MIT-blue.svg) ![npm version](https://img.shields.io/badge/npm-v0.1.0-blue.svg)
+ ![License](https://img.shields.io/badge/License-MIT-blue.svg) ![npm version](https://img.shields.io/badge/npm-v0.1.0-blue.svg)
 
 ## Table of Contents
 

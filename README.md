@@ -55,23 +55,20 @@ MovieFlix is a Next.js application leveraging React for its component-based UI a
 ## Tech Stack
 
 | Area | Tool | Version |
-
+|---|---|---|
+|---|---|---|
 | Framework | Next.js | 15.4.6 |
-
 | UI Library | React | 19.1.0 |
-
+|---|---|---|
 | Language | TypeScript | ^5 |
-
 | Styling | Tailwind CSS | ^4 |
-
+|---|---|---|
 | Animation | Framer Motion | 12.23.12 |
-
 | State Management | Zustand | 5.0.7 |
-
+|---|---|---|
 | State Management | React Context API | N/A |
-
 | API Client | Axios | 1.11.0 |
-
+|---|---|---|
 | Linting | ESLint | ^9 |
 
 
@@ -229,11 +226,14 @@ pnpm start
 ## Scripts
 
 | Command | Description |
+|---|---|
+|---|---|
 | `dev` | Starts the Next.js development server with Turbopack enabled. |
 | `build` | Builds the application for production deployment. |
+|---|---|
 | `start` | Starts the Next.js production server. |
 | `lint` | Runs ESLint to check for code quality and style issues. |
-
+|---|---|
 
 
 
@@ -250,6 +250,8 @@ pnpm start
 -   [ ] Optimize image loading and overall application performance.
 
 -   [ ] Set up a CI/CD pipeline for automated testing and deployment.
+
+-   [ ] Improve accessibility (A11y) across the application.
 
 -   [ ] Integrate a backend API for persistent favorite storage.
 
@@ -270,6 +272,9 @@ Please ensure your code adheres to the existing style and passes linting checks.
 
 This project currently does not include a dedicated testing framework. Future plans include integrating unit and integration tests to ensure code quality and stability.
 
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ## Acknowledgements
 

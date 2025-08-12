@@ -251,8 +251,6 @@ pnpm start
 
 -   [ ] Set up a CI/CD pipeline for automated testing and deployment.
 
--   [ ] Improve accessibility (A11y) across the application.
-
 -   [ ] Integrate a backend API for persistent favorite storage.
 
 ## Contributing

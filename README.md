@@ -55,14 +55,23 @@ MovieFlix is a Next.js application leveraging React for its component-based UI a
 ## Tech Stack
 
 | Area | Tool | Version |
+
 | Framework | Next.js | 15.4.6 |
+
 | UI Library | React | 19.1.0 |
+
 | Language | TypeScript | ^5 |
+
 | Styling | Tailwind CSS | ^4 |
+
 | Animation | Framer Motion | 12.23.12 |
+
 | State Management | Zustand | 5.0.7 |
+
 | State Management | React Context API | N/A |
+
 | API Client | Axios | 1.11.0 |
+
 | Linting | ESLint | ^9 |
 
 
